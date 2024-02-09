@@ -26,9 +26,11 @@ pipeline {
         }
 	stage('Deployment') {
 	   steps {
-		sh 'sshpass -p ubuntu scp -o StrictHostKeyChecking=no target/gamutkart.war jenkins@172.31.44.59:/var/lib/tomcat9/webapps/'
-		
-	}
+        script {
+            sh 'echo $SSH_KEY'
+            sh 'cat $SSH_KEY'
+            sh 'sshpass -p ubuntu scp -o StrictHostKeyChecking=no -i $SSH_KEY target/gamutkart.war ubuntu@172.31.44.59:/var/lib/tomcat9/webapps/'
+        }
     }
 }
 }
