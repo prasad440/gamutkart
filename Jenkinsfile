@@ -26,7 +26,7 @@ pipeline {
         }
 	stage('Deployment') {
 	   steps {
-		sh 'sshpass -p ubuntu scp target/gamutkart.war ubuntu@54.169.78.203:/var/lib/tomcat9/webapps/'
+		sh 'sshpass -p ubuntu scp target/gamutkart.war prayag@172.31.47.18:/var/lib/tomcat9/webapps/'
 	}
     }
 }
